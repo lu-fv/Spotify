@@ -5,6 +5,7 @@ import INTERRFACES.Reproduction;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Stack;
 
 public class PremiumList implements Reproduction {
 
@@ -13,6 +14,7 @@ public class PremiumList implements Reproduction {
 
     @Override
     public Song play() {
+
         String select;
         this.showMyList();
         System.out.println(" Choose song'name: ");
@@ -39,20 +41,25 @@ public class PremiumList implements Reproduction {
     }
 
     @Override
-    public void deleteSong(String title) {
-       this.myListPremium.remove(searchSong(title));
+    public void deleteSong() {
+        this.showMyList();
+        System.out.println(" Choose song'name: ");
+        Scanner sc = new Scanner(System.in);
+        String select = sc.nextLine();
+       this.myListPremium.remove(searchSong(select));
 
     }
 
     @Override
-    public void showMyList() {
-        int cont = 0;
+    public List showMyList() {
+        int cont = 1;
         System.out.println(" MyList " + name);
         for (Song song : myListPremium) {
             System.out.println(" Song: " + cont + song.toString() + "\n");
 
             cont++;
         }
+        return this.myListPremium;
     }
 
     public PremiumList(String name, LinkedList<Song> myListPremium) {

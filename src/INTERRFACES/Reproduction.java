@@ -9,6 +9,6 @@ public interface Reproduction {
 
     public Song play ();
     public void addSong(Song song);
-    public void deleteSong(String title);
-    public void showMyList();
+    public void deleteSong();
+    public List showMyList();
 }

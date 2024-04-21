@@ -3,6 +3,7 @@ package MODELS;
 import INTERRFACES.Reproduction;
 
 import java.util.List;
+import java.util.Scanner;
 import java.util.Stack;
 
 public class BasicList implements Reproduction {
@@ -13,7 +14,6 @@ public class BasicList implements Reproduction {
     @Override
     public Song play() {
         Stack<Song> aux = new Stack<>();
-        // Song firstSong = aux.pop();
 
         while (!myListBasic.empty()) {
 
@@ -31,20 +31,27 @@ public class BasicList implements Reproduction {
 
     @Override
     public void addSong(Song song) {
+
         myListBasic.push(song);
     }
 
     @Override
-    public void deleteSong(String title) {
+    public void deleteSong() {
         System.out.println("Para acceder a estas opciones, compre el paquete PREMIUM");
 
     }
 
     @Override
-    public void showMyList() {
+    public List showMyList() {
+        int cont = 1;
+        System.out.println(" MyList " + name);
+        for (Song song : myListBasic) {
+            System.out.println(" Song: " + cont + song.toString() + "\n");
 
+            cont++;
+        }
+        return this.myListBasic;
     }
-
     public BasicList(String name, Stack<Song> myListBasic) {
         this.name = name;
         this.myListBasic = myListBasic;
